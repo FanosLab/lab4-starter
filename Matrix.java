@@ -10,184 +10,100 @@
  * @author jianfeng
  */
 public class Matrix {
-        private int[][]  matrixData;
+    
+	private int[][]  matrixData;
 	private int    rowsNum;	
 	private int    colsNum;	
 	
 	public Matrix( int row, int col ) 
 	{   
-		if (row<=0){ 
-                    this.rowsNum=3;
-                }
-                else 
-                    this.rowsNum=row;
-                if (col<=0){ 
-                    this.colsNum=3;
-                }
-                else 
-                    this.colsNum=col;
-               int[][] matrix= new int[this.rowsNum][this.colsNum];
-               this.matrixData=matrix;		
-
+		/*
+		* constructs a row-by-col matrix with
+		* all elements equal to 0; if row ≤ 0, the number of rows of the matrix is set to
+		* 3; likewise, if col ≤ 0 the number of columns of the matrix is set to 3.		
+		*/
 	}
 
 	public Matrix( int[][] table) 
 	{	
 
-		rowsNum = table.length;
-		colsNum = table[0].length;
-                
-		matrixData = new int[rowsNum][colsNum]; 
-
-		for (int i=0; i<rowsNum; i++)
-			for(int j=0; j<colsNum; j++)
-				matrixData[i][j] = table[i][j];
+		/*
+		* constructs a matrix out of the two dimensional array table, with the same number of rows, columns, and the same
+		* element in each position as array table.
+		*/ 
 	}
 	
 	public int getElement(int i, int j) throws IndexOutOfBoundsException
 	{ 	
-		if  ( i <= this.rowsNum-1 && j <= this.colsNum-1 && i>=0 && j>=0 ) {
-			return this.matrixData[i][j];
-		}
-		else {
-			throw new IndexOutOfBoundsException("Invalid indexes.");
-		}  
+		/*
+		* returns the element on row i and column j of this matrix; 
+		* it throws an exception (IndexOutOfBoundsException) if any of indexes i and j is not in the required range 
+		* (rows and columns indexing starts with 0)
+		*  the detail message of the exception should read: ”Invalid indexes”.
+		*/
+		
+		
 	}
         
-        public boolean setElement(int x, int i, int j){ 
+    public boolean setElement(int x, int i, int j){ 
             
-            if  ( i <= this.rowsNum-1 && j <= this.colsNum-1 && i>=0 && j>=0 ){
-                this.matrixData[i][j]=x;
-                return true;
-            }
-            else 
-                return false;
-        } 
+        /* the detail message of the exception should read: ”Invalid indexes” */
+    } 
 
-        public Matrix copy(){ 
-            Matrix copy= new Matrix(this.rowsNum,this.colsNum ); 
-
-            for (int i=0; i < this.rowsNum; i++){
-                for (int j=0; j < this.colsNum ;j++){
-                    copy.matrixData[i][j]=this.matrixData[i][j];
-                }
-            }
-            return  copy; 
-        }    
+    public Matrix copy(){ 
+        Matrix copy;
+		
+		/* write your implementation below */
+		
+		
+		
+        return  copy; 
+    }    
                 
 	public void addTo( Matrix m ) throws ArithmeticException
 	{
-		if ( m.rowsNum== this.rowsNum && m.colsNum==this.colsNum ){
-                    for (int i=0; i<this.rowsNum;i++){
-                        for (int j=0; j<this.colsNum;j++){
-                            this.matrixData[i][j]=m.matrixData[i][j]+ this.matrixData[i][j];
-                        }
-                    }
-		}
-		else {
-			throw new ArithmeticException("Invalid operation");
-		}
+		
+		/* the detail message of the exception should read: ”Invalid operation”. */
 
 	}
 	
-        public Matrix subMatrix(int i, int j) throws ArithmeticException{ 
-            if  ( i <= this.rowsNum-1 && j <= this.colsNum-1 && i>=0 && j>=0){
-                Matrix m1= new Matrix(i,j); 
-                for (int k=0; k<i;k++){ 
-                        for (int r=0; r<j;r++){
-                            m1.matrixData[k][r]=this.matrixData[k][r];
-                        }
-                }
-                return m1; 
-            }
-            else { 
-                throw new ArithmeticException("Submatrix not defined");
-            }
-        }
+    public Matrix subMatrix(int i, int j) throws ArithmeticException{ 
         
-        public int getsizeofrows(){ 
-            return this.rowsNum; 
-        }
+		/* The exception detail message should read: ”Submatrix not defined” */
+    }
         
-        public int getsizeofcols(){
-            return this.colsNum; 
-        }
+    public int getsizeofrows(){ 
+           
+		/* update below return */
+		return -1;
+    }
         
-        public boolean isUpperTr(){
-            
-            if (this.rowsNum== this.colsNum){
-                for (int i=0, j=0; i<this.rowsNum && j<this.colsNum;i++,j++){
-                    int q=j;
-                    while (q !=0){ 
-                        q--; 
-                        if (this.matrixData[i][q]!= 0){ 
-                            return false;
-                        }
-                    }
-                }
-            }
-
-            if (this.rowsNum < this.colsNum){
-                for (int i=0, j=0; i<this.rowsNum && j<this.rowsNum;i++,j++){
-                    int q=j;
-                    while (q !=0){
-                        q--;
-                        if (this.matrixData[i][q]!= 0){
-                            return false;
-                        }
-                    }
-                }
-            }
-            
-            if (this.rowsNum > this.colsNum){
-                for (int i=0, j=0; i<this.colsNum && j<this.rowsNum;i++,j++){
-                    int q=j;
-                    while (q !=0){
-                        q--;
-                        if (this.matrixData[i][q]!= 0){
-                            return false;
-                        }
-                    }
-                }
-                
-                for (int i=this.colsNum;i<this.rowsNum;i++){ 
-                    for (int j=0; j<this.colsNum;j++){ 
-                        if (this.matrixData[i][j]!=0){
-                            return false;}
-                    }
-                    
-                }
-            }
-            return true;  
-        }
+    public int getsizeofcols(){
+		
+		/* update below return */
+        return -1; 
+    }
         
-        public static Matrix sum(Matrix[] matArray) throws ArithmeticException{
-            int length= matArray.length; 
+    public boolean isUpperTr(){
             
-            for (int i= 0; i<length; i++){ 
-                if (matArray[i].rowsNum!= matArray[0].rowsNum && matArray[i].colsNum!= matArray[0].colsNum )
-                    throw new ArithmeticException("Matrices do not have the same deminsions");
-            }
-            
-            Matrix superMatrix= new Matrix(matArray[0].rowsNum,matArray[0].colsNum); 
-            for (int i=0; i<length; i++){
-                superMatrix.addTo(matArray[i]); 
-            }
+		/* write your implementation here and update return accordingly */
+        return true;  
+	}
+        
+    public static Matrix sum(Matrix[] matArray) throws ArithmeticException{
             
             
-            return superMatrix; 
-        }
+        Matrix superMatrix; 
+            
+            
+        return superMatrix; 
+    }
         
 	public String toString(  )
 	{
 		String output = new String(); 
-        	for(int i = 0; i < rowsNum; i++){
-        		for(int j = 0; j < colsNum; j++){
-        			output += matrixData[i][j] + "  ";
-        		}
-                        output += "\n";
-        	}
-       		 return output;
+        	
+		return output;
 	}
     
 }
