@@ -61,14 +61,14 @@ public class UpperTriangularMatrix {
     public int getDet(){
         
         
-       return ; 
+       return -1; 
     }
 
     
     public double[] effSolve(double[] b) throws IllegalArgumentException{
 
-            
-        double[] sol;
+        /* fix the following and write your implementation */
+    	double[] sol = new double[10];
 
        
         return sol;  

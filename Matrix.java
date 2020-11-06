@@ -39,21 +39,24 @@ public class Matrix {
 		* returns the element on row i and column j of this matrix; 
 		* it throws an exception (IndexOutOfBoundsException) if any of indexes i and j is not in the required range 
 		* (rows and columns indexing starts with 0)
-		*  the detail message of the exception should read: ”Invalid indexes”.
+		*  the detail message of the exception should read: "Invalid indexes".
 		*/
 		
-		
+		return -1;
 	}
         
     public boolean setElement(int x, int i, int j){ 
             
-        /* the detail message of the exception should read: ”Invalid indexes” */
+        /* the detail message of the exception should read: "Invalid indexes" */
+    	
+    	return false;
     } 
 
     public Matrix copy(){ 
-        Matrix copy;
+        
+    	/* fix the code and write your implementation below */
+		Matrix copy = new Matrix (0,0);
 		
-		/* write your implementation below */
 		
 		
 		
@@ -63,13 +66,23 @@ public class Matrix {
 	public void addTo( Matrix m ) throws ArithmeticException
 	{
 		
-		/* the detail message of the exception should read: ”Invalid operation”. */
-
+		/* the detail message of the exception should read: "Invalid operation". */
+		
+	
 	}
 	
     public Matrix subMatrix(int i, int j) throws ArithmeticException{ 
         
-		/* The exception detail message should read: ”Submatrix not defined” */
+		/* The exception detail message should read: "Submatrix not defined"*/
+    	
+    	/* fix the code and write your implementation below */
+		Matrix subM = new Matrix (0,0);
+		
+		
+		
+		
+        return  subM; 
+        
     }
         
     public int getsizeofrows(){ 
@@ -93,7 +106,7 @@ public class Matrix {
     public static Matrix sum(Matrix[] matArray) throws ArithmeticException{
             
             
-        Matrix superMatrix; 
+        Matrix superMatrix = new Matrix (1,1); 
             
             
         return superMatrix; 
